@@ -33,7 +33,6 @@ const layersData = {
   l_Decoration: l_Decoration,
   l_Ground: l_Ground,
   l_Collisions: l_Collisions,
-  l_Cherries: l_Cherries,
 };
 
 const tilesets = {
@@ -217,6 +216,35 @@ function init() {
     },
   })
 
+  l_Cherries.forEach((row, y) => {
+    row.forEach((symbol, x) => {
+      if (symbol === 19) {
+        gems.push(
+          new Sprite({
+            x: x * 16,
+            y: y * 16,
+            width: 15,
+            height: 13,
+            imageSrc: './images/gem.png',
+            spriteCropbox: {
+              x: 0,
+              y: 0,
+              width: 15,
+              height: 13,
+              frames: 5,
+            },
+            hitbox: {
+              x: x * 16,
+              y: y * 16,
+              width: 15,
+              height: 13,
+            },
+          }),
+        )
+      }
+    })
+  })
+
   l_Gems.forEach((row, y) => {
     row.forEach((symbol, x) => {
       if (symbol === 18) {
@@ -261,18 +289,170 @@ function init() {
       width: 36,
       height: 28,
     }),
+
     new Oposum({
-      x: 1150,
-      y: 515,
+      x: 390,
+      y: 304,
+      width: 36,
+      height: 28,
+    }),
+
+    new Oposum({
+      x: 646,
+      y: 224,
+      width: 36,
+      height: 28,
+    }),
+
+    new Oposum({
+      x: 459,
+      y: 432,
       width: 36,
       height: 28,
     }),
     new Oposum({
-      x: 1663,
-      y: 200,
+      x: 1197,
+      y: 160,
       width: 36,
       height: 28,
     }),
+
+
+    new Oposum({
+      x: 1611,
+      y: 240,
+      width: 36,
+      height: 28,
+    }),
+
+    new Oposum({
+      x: 2106,
+      y: 208,
+      width: 36,
+      height: 28,
+    }),
+
+
+    new Oposum({
+      x: 2285,
+      y: 192,
+      width: 36,
+      height: 28,
+    }),
+
+    new Oposum({
+      x: 2605,
+      y: 96,
+      width: 36,
+      height: 28,
+    }),
+
+
+    new Oposum({
+      x: 2923,
+      y: 176,
+      width: 36,
+      height: 28,
+    }),
+
+    new Oposum({
+      x: 3295,
+      y: 191,
+      width: 36,
+      height: 28,
+    }),
+
+    new Oposum({
+      x: 3633,
+      y: 127,
+      width: 36,
+      height: 28,
+    }),
+
+    new Oposum({
+      x: 4232,
+      y: 176,
+      width: 36,
+      height: 28,
+    }),
+
+
+    new Oposum({
+      x: 4490,
+      y: 80,
+      width: 36,
+      height: 28,
+    }),
+    new Oposum({
+      x: 4707,
+      y: 400,
+      width: 36,
+      height: 28,
+    }),
+
+    new Oposum({
+      x: 4527,
+      y: 431,
+      width: 36,
+      height: 28,
+    }),
+
+    new Oposum({
+      x: 4261,
+      y: 432,
+      width: 36,
+      height: 28,
+    }),
+
+
+
+    new Oposum({
+      x: 4098,
+      y: 432,
+      width: 36,
+      height: 28,
+    }),
+
+
+    new Oposum({
+      x: 3561,
+      y: 432,
+      width: 36,
+      height: 28,
+    }),
+
+    new Oposum({
+      x: 2890,
+      y: 432,
+      width: 36,
+      height: 28,
+    }),
+
+    new Oposum({
+      x: 2368,
+      y: 432,
+      width: 36,
+      height: 28,
+    }),
+
+
+
+    new Oposum({
+      x: 1650,
+      y: 432,
+      width: 36,
+      height: 28,
+    }),
+
+
+    new Oposum({
+      x: 1242,
+      y: 432,
+      width: 36,
+      height: 28,
+    }),
+
+
   ]
 
   sprites = []
@@ -326,8 +506,6 @@ function init() {
 
 
 
-
-
 const SCROLL_POST_RIGHT = 400
 const SCROLL_POST_TOP = 100
 const SCROLL_POST_BOTTOM = 240
@@ -343,6 +521,8 @@ const animate = (currentTime) => {
   // Calculate delta time in seconds
   const deltaTime = (currentTime - lastTime) / 1000
   lastTime = currentTime
+
+  console.log(player.player.x, player.player.y)
 
   // Update player position
   player.player.handleInput(keys)
@@ -424,10 +604,10 @@ const animate = (currentTime) => {
     eagle.update(deltaTime, collisionBlocks)
 
     // Jump on enemy
-    const collisionDirection = checkCollisions(player, eagle)
+    const collisionDirection = checkCollisions(player.player, eagle)
     if (collisionDirection) {
-      if (collisionDirection === 'bottom' && !player.isOnGround) {
-        player.velocity.y = -200
+      if (collisionDirection === 'bottom' && !player.player.isOnGround) {
+        player.player.velocity.y = -200
         sprites.push(
           new Sprite({
             x: eagle.x,
@@ -455,13 +635,13 @@ const animate = (currentTime) => {
           return !heart.depleted
         })
 
-        if (!player.isInvincible && fullHearts.length > 0) {
+        if (!player.player.isInvincible && fullHearts.length > 0) {
           fullHearts[fullHearts.length - 1].depleted = true
         } else if (fullHearts.length === 0) {
           init()
         }
 
-        player.setIsInvincible()
+        player.player.setIsInvincible()
       }
     }
   }

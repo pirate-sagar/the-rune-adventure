@@ -100,6 +100,13 @@ export class Player {
     }
   }
 
+  setIsInvincible() {
+    this.isInvincible = true
+    setTimeout(() => {
+      this.isInvincible = false
+    }, 1500)
+  }
+
   update(deltaTime, collisionBlocks, platforms) {
     if (!deltaTime || !this.loaded) return
     this.applyGravity(deltaTime)
