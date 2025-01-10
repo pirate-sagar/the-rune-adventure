@@ -12,6 +12,7 @@ Controls:
 
 ## Video Demo
 
+https://github.com/pirate-sagar/the-rune-adventure/blob/main/demo/demo-video.mp4
 [![Rune Adventure Video Demo](demo/ss1.png)](demo/demo-video.mp4 "Rune Adventure Video Demo")
 
 ## Screenshots
