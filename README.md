@@ -1,38 +1,26 @@
-# sv
+# The Rune Adventure
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+A 2D platform game where the player stomps on enemies and collects magical runic gems.
 
-## Creating a project
+Controls:
+- 'A' and 'D' to move left and right
+- 'W' to jump
+- Jump on enemies to stomp them
+- Collect runic gems
 
-If you're seeing this, you've probably already done this step. Congrats!
+[Play the game here](https://the-rune-adventure.vercel.app/)!
 
-```bash
-# create a new project in the current directory
-npx sv create
+## Video Demo
 
-# create a new project in my-app
-npx sv create my-app
-```
+[![Rune Adventure Video Demo](demo/ss1.png)](demo/demo-video.mp4 "Rune Adventure Video Demo")
 
-## Developing
+## Screenshots
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+![Rune Adventure Screenshot 1](demo/ss1.png "Screenshot 1")
+![Rune Adventure Screenshot 2](demo/ss2.png "Screenshot 2")
+![Rune Adventure Screenshot 3](demo/ss3.png "Screenshot 3")
+![Rune Adventure Screenshot 4](demo/ss4.png "Screenshot 4")
 
-```bash
-npm run dev
+## Credits
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+[Game assets by ansimuz](https://ansimuz.itch.io/sunny-land-pixel-game-art)!
